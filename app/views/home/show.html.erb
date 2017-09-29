@@ -1,0 +1,38 @@
+<%= provide(:title, "Show") %>
+<% if logged_in? %>
+    <div class="row">
+      <div class="col-md-7">
+        <div class="player"></div>
+      </div>
+      <div class="col-md-5">
+        <%= render 'shared/post_form' %>
+        <% if @videos.any? %>
+            <ul class="list-group">
+              <div id="new">
+                <%= render @videos %>
+              </div>
+            </ul>
+        <% end %>
+      </div>
+    </div>
+    <script>
+        $(document).ready(function(){
+            <% @videos.each do |video| %>
+            $("#img-<%=video.uid%>").click(function(){
+                $(".player").html("<iframe width='620' height='480' src='https://www.youtube.com/embed/<%= video.uid%>?autoplay=1' frameborder='0' allowfullscreen></iframe>");
+            });
+            <% end %>
+        });
+    </script>
+<% else %>
+    <div class="row">
+      <div class="jumbotron">
+        <div class="container">
+          <h1>Welcome to TADITube</h1>
+          <p>Click the button below to push your video from YouTube.</p>
+          <%= link_to "Log in now!", "/auth/google_oauth2", class: "btn btn-primary btn-lg" %>
+        </div>
+      </div>
+    </div>
+<%end %>
+

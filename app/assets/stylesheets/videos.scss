@@ -1,0 +1,15 @@
+// Place all the styles related to the Videos controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.list-videos {
+
+  li {
+    border: none;
+  }
+  li:hover {
+    background: rgba(1,1,1,0.1);
+    border-color: rgba(21,32,33,0.6);
+    cursor: pointer;
+  }
+
+}
